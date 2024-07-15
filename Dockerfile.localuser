@@ -1,0 +1,10 @@
+FROM carla:prova
+
+ARG UID=
+ARG GID=
+USER root
+
+RUN usermod -u $UID carla
+RUN groupmod -g $GID carla
+
+USER carla

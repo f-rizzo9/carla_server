@@ -1,0 +1,26 @@
+
+sudo docker exec -it carla-container /bin/bash
+sudo docker stop carla-container
+
+
+GUIDA DEFINITIVA
+Apri il cmd di Windows e fai: ssh gruppo1@10.73.0.132 e come password XnqYH5)]Zp
+# per buildare il DockerFile
+sudo docker build --rm -t carla:hl -f Dockerfile.carla_headless .
+
+# fare il docker run
+docker run --rm -it --net host --name gruppo1-carla-container -u carla --gpus 0 carla:hl bash
+# lanciare il server di Carla
+./CarlaUE4.sh -vulkan -RenderOffscreen -nosound
+
+
+# Apro un altro terminale
+roslaunch carla_ros_bridge carla_ros_bridge.launch host:=10.73.0.132 timeout:=20
+roslaunch carla_spawn_objects carla_spawn_objects.launch host:=10.73.0.132 timeout:=20
+sudo docker exec -it 43bc1f140cd8 bash #container di ros-bridge
+source ./devel/setup.bash
+ 
+# Apri un terminale WLS ed entra nel container di ros-bridge, vai nella cartella docker ed esegui il run.sh
+sudo docker exec -it 43bc1f140cd8 bash #container di ros-bridge (metti il tuo id)
+source /opt/ros/noetic/setup.bash
+rosrun rviz rviz
