@@ -7,8 +7,8 @@ export AVAHI_PUB_PID=$!
 trap 'echo Killing avahi-publish with PID $AVAHI_PUB_PID && kill $AVAHI_PUB_PID' EXIT
 
 docker run --rm -it \
---net host \
 --name gruppo1-carla-container \
--u carla \ 
+--net host \
+--user carla \
 --gpus 0 \
 carla:hl ./launch_headless.sh
