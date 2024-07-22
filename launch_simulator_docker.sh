@@ -11,4 +11,4 @@ docker run --rm -it \
 --net host \
 --user carla \
 --gpus 0 \
-carla:hl ./launch_headless.sh
+carla:gruppo1 ./launch_headless.sh
