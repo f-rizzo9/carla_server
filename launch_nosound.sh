@@ -2,7 +2,7 @@
 
 # echo "Starting avahi..."
 # sudo avahi-daemon -D
-
+#
 unset SDL_VIDEODRIVER
 
 echo "Starting simulator..."
